@@ -1,0 +1,133 @@
+<templates>
+	<even>
+		<template>
+			<name>half shower</name>
+			<template>{n+1}{n-1}</template>
+		</template>
+		<template>
+			<name>fountain</name>
+			<template>{n}</template>
+		</template>
+		<template>
+			<name>wimpy</name>
+			<template>({n}x,{n}x)</template>
+		</template>
+		<template>
+			<name>synch fountain</name>
+			<template>({n},{n})</template>
+		</template>
+		<template>
+			<name>sprung cascade</name>
+			<template>({2*n-2}x,2x)*</template>
+		</template>
+	</even>
+	<odd>
+		<template>
+			<name>(6x,4) type</name>
+			<template>({n+1}x,{n-1})*</template>
+		</template>
+		<template>
+			<name>wimpy with a hole</name>
+			<template>|({n+1}x,{n+1}x)^n/2|({n+1}x,0)*</template>
+		</template>
+		<template>
+			<name>cascade</name>
+			<template>{n}</template>
+		</template>
+		<template>
+			<name>1 to n</name>
+			<template>|{i}^1,n+1|</template>
+		</template>
+		<template>
+			<name>half shower</name>
+			<template>({n+1}x,{n-1}x)</template>
+		</template>
+		<template>
+			<name>fountain with a hole</name>
+			<template>|({n+1},{n+1})^n/2|({n+1},0)</template>
+		</template>
+		<template>
+			<name>sprung fountain</name>
+			<template>({2*n-2},2x)*</template>
+		</template>
+	</odd>
+	<both>
+		<template>
+			<name>freeze frame</name>
+			<template>|{2*n-2*i+1}^1,n+1|</template>
+		</template>
+		<template>
+			<name>highs 0</name>
+			<template>|{n+1}^n|0</template>
+		</template>
+		<template>
+			<name>high low shower</name>
+			<template>{2*n+1}1{2*n-3}1</template>
+		</template>
+		<template>
+			<name>snake with a hold</name>
+			<template>|{2*n-3}2^n-3|{2*n-3}</template>
+		</template>
+		<template>
+			<name>high low synch shower</name>
+			<template>({2*n}x,2x)({2*n-4}x,2x)</template>
+		</template>
+		<template>
+			<name>645 type</name>
+			<template>{n+1}{n-1}{n}</template>
+		</template>
+		<template>
+			<name>flash</name>
+			<template>|{n+2}^n|00</template>
+		</template>
+		<template>
+			<name>shower</name>
+			<template>{2*n-1}1</template>
+		</template>
+		<template>
+			<name>highs 1</name>
+			<template>|{n+1}^n-1|1</template>
+		</template>
+		<template>
+			<name>one hand</name>
+			<template>{2*n}0</template>
+		</template>
+		<template>
+			<name>x01</name>
+			<template>{3*n-1}01</template>
+		</template>
+		<template>
+			<name>synch shower</name>
+			<template>({2*n-2}x,2x)</template>
+		</template>
+		<template>
+			<name>snake</name>
+			<template>|{2*n-1}0^n-1|{2*n-1}</template>
+		</template>
+		<template>
+			<name>box</name>
+			<template>|({(n-i-1)*4},2x)^1,n-1|*</template>
+		</template>
+		<template>
+			<name>switched box</name>
+			<template>|({(n-i-1)*4}x,2)^1,n-1|*</template>
+		</template>
+		<template>
+			<name>even freeze frame</name>
+			<template>|{2*(n-i)}^1,n|</template>
+		</template>
+		<template>
+			<name>rockets</name>
+			<template>{n+2}{n-1}{n-1}</template>
+		</template>
+		<template>
+			<name>baby juggling</name>
+			<template>|{2*n-1}2^n-2|{2*n-1}12</template>
+		</template>
+		<template>
+			<name>shower with a leak</name>
+			<name>leak</name>
+			<template>{2*n}|1{2*n-1}^n-1|0</template>
+		</template>
+	</both>
+</templates>
