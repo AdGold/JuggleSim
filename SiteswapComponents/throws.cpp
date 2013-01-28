@@ -87,7 +87,7 @@ int Throws::getNum(string pattern, int &i)
             else { errMsg<<"Invalid input character '"<<pattern[i]<<"' in curly bracket."; return -1; }
             i++;
         }
-        if (num > 99) { cout<<"max high throw = 99"<<endl;errMsg<<"Highest possible throw is 99."; return -2; }
+        if (num > 99) {errMsg<<"Highest possible throw is 99."; return -2; }
         if (i < period2) { return num; }
         else { errMsg<<"No closing curly bracket"; return -1; }
     }
