@@ -129,6 +129,7 @@ const Throw &Throw::operator=(const Throw &th)
     RHThrows = th.getRHThrows();
     LHCrossing = th.getLHCrossing();
     RHCrossing = th.getRHCrossing();
+    return (*this);
 }
 
 };
