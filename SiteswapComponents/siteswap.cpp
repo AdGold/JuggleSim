@@ -72,8 +72,8 @@ string Siteswap::synchEquivelent(bool hand) const
     bool flipAtEnd = false;
     if (!doubleSiteswap[0].hasSynch())
     {
-        if (doubleSiteswap[0].getRHThrows().size() > 0 && hand
-            || doubleSiteswap[0].getLHThrows().size() > 0 && !hand)
+        if ((doubleSiteswap[0].getRHThrows().size() > 0 && hand)
+            || (doubleSiteswap[0].getLHThrows().size() > 0 && !hand))
         {
             hand = !hand;
             flipAtEnd = true;
