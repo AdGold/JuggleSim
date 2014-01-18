@@ -54,7 +54,7 @@ namespace Transitions
 			throws.add(Throw());
 			if (a[place].first == i)
 			{
-				for (; a[place].first == i; place++)
+				for (; a[place].first == i && place < a.size(); place++)
 				{
 					int ss = b[place].first-a[place].first+shift;
 					bool cross = (ss%2)^(a[place].second!=b[place].second);
