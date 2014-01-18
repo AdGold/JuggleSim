@@ -1,1 +1,1 @@
-CXXFLAGS += -std=c++0x SiteswapComponents/*.cpp pugixml/pugixml.cpp 
+CXXFLAGS += -std=c++0x SiteswapComponents/*.cpp pugixml/pugixml.cpp AnimationComponents/*.cpp
