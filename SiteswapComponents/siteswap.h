@@ -76,4 +76,3 @@ string putInBestRotation(string pattern);
 };
 
 #endif //SITESWAP
-
