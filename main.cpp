@@ -10,15 +10,14 @@ using namespace AnimationComponents;
 int main()
 {
 	PatternSettings ps;
-	ps.setSiteswap("531");
-	ps.setIsStack(false);
+	ps.setSiteswap("321");
+	ps.setIsStack(true);
 	ps.setCurrentFile("test.xml");
 	vector<Colour> vc;
-	vc.push_back(Colour(1,2,3));
-	vc.push_back(Colour(4,5,6));
+	vc.push_back(Colour(231,200,33));
+	vc.push_back(Colour(43,235,36));
 	ps.setBallColours(vc);
 	ps.save();
-	cout<<"1 done\n";
 	PatternSettings ps2;
 	ps2.open("test.xml");
 	cout<<ps2.getSiteswap()<<", "<<ps2.isStack()<<", "<<ps2.isSiteswap()<<", "<<ps2.getCurrentFile()<<", "<<ps2.getBallSize()<<", "<<ps2.getThrowsPerSecond()<<", "<<ps2.getBeatLength()<<", "<<ps2.getGravityInternal()<<", "<<ps2.getGravity()<<", "<<ps2.getDwellTime()<<"\n";

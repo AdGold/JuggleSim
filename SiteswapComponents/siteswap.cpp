@@ -22,7 +22,9 @@ bool Siteswap::setSiteswap(string _pattern, bool isStack)
         isStack = false;
     }
     string pattern = expand(_pattern);
-    if (!(errMsg = siteswap.setThrows(pattern)).empty()) return false;
+    errMsg = siteswap.setThrows(pattern);
+    if (!errMsg.empty()) return false;
+
     
     if (isStack)
     {
@@ -417,7 +419,7 @@ bool Siteswap::checkvalid(string pattern)
         //array[n][j]--; //-- added on next line
         if (--((j)?array[n].second:array[n].first) < 0)
         {
-            errMsg = "Collision in siteswap, did you mean one of these?";
+            errMsg = "Collision in siteswap.";
             return false;
         }
     }

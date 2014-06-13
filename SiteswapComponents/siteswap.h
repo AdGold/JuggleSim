@@ -12,6 +12,7 @@ using namespace std;
 #include "transitions.h"
 #include "templateSS.h"
 
+
 namespace SiteswapComponents{
 
 class Siteswap
@@ -30,7 +31,7 @@ public:
 	string getErrMsg() const { return errMsg; }
 	int getBalls() const { return balls; }
 	int getPeriod() const { return period; }
-	int getBMaxThrow() const { return maxThrow; }
+	int getMaxThrow() const { return maxThrow; }
 	int getExcitation() const { return excitation; }
 	int getDifficulty() const { return difficulty; }
 	//vector<string> getThrows() { return siteswap.getThrows(lower); }
@@ -48,6 +49,8 @@ public:
 	string flipped() const;
     string synchEquivelent() const { return synchEquivelent(false); }
     string synchEquivelent(bool hand) const;
+
+    bool loadTemplates() { bool loaded; TemplateSS::load("templates.xml", loaded); return loaded; }
 private:
 	Throws siteswap, entry, exit, doubleSiteswap, stackNotation;
 	State state;
@@ -73,3 +76,4 @@ string putInBestRotation(string pattern);
 };
 
 #endif //SITESWAP
+
