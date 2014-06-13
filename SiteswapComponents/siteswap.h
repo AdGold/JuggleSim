@@ -12,6 +12,8 @@ using namespace std;
 #include "transitions.h"
 #include "templateSS.h"
 
+#include <emscripten/bind.h>
+
 namespace SiteswapComponents{
 
 class Siteswap
@@ -30,7 +32,7 @@ public:
 	string getErrMsg() const { return errMsg; }
 	int getBalls() const { return balls; }
 	int getPeriod() const { return period; }
-	int getBMaxThrow() const { return maxThrow; }
+	int getMaxThrow() const { return maxThrow; }
 	int getExcitation() const { return excitation; }
 	int getDifficulty() const { return difficulty; }
 	//vector<string> getThrows() { return siteswap.getThrows(lower); }
@@ -48,6 +50,8 @@ public:
 	string flipped() const;
     string synchEquivelent() const { return synchEquivelent(false); }
     string synchEquivelent(bool hand) const;
+
+    bool loadTemplates() { bool loaded; TemplateSS::load("templates.xml", loaded); return loaded; }
 private:
 	Throws siteswap, entry, exit, doubleSiteswap, stackNotation;
 	State state;
@@ -71,5 +75,43 @@ private:
 string putInBestRotation(string pattern);
 
 };
+
+using namespace SiteswapComponents;
+
+EMSCRIPTEN_BINDINGS(siteswap_test) {
+    emscripten::class_<Siteswap>("Siteswap")
+        .constructor<>()
+        .function("setSiteswap", &Siteswap::setSiteswap)
+        .function("getSiteswap", &Siteswap::getSiteswap)
+        .function("getEntry", &Siteswap::getEntry)
+        .function("getExit", &Siteswap::getExit)
+        .function("getDoubleSiteswap", &Siteswap::getDoubleSiteswap)
+        .function("getStackNotation", &Siteswap::getStackNotation)
+        .function("getState", &Siteswap::getState)
+        .function("getComment", &Siteswap::getComment)
+        .function("getErrMsg", &Siteswap::getErrMsg)
+        .function("getBalls", &Siteswap::getBalls)
+        .function("getPeriod", &Siteswap::getPeriod)
+        .function("getMaxThrow", &Siteswap::getMaxThrow)
+        .function("getExcitation", &Siteswap::getExcitation)
+        .function("getDifficulty", &Siteswap::getDifficulty)
+        .function("isValid", &Siteswap::isValid)
+        .function("isGround", &Siteswap::isGround)
+        .function("isPureSynch", &Siteswap::isPureSynch)
+        .function("isPureAsynch", &Siteswap::isPureAsynch)
+        .function("isMultiplex", &Siteswap::isMultiplex)
+        .function("isVanila", &Siteswap::isVanila)
+	/*bool useSynchGround() const { return synchGround; }
+	void useSynchGround(bool synchGround) { this->synchGround = synchGround; }
+	bool useLower() const { return lower; }
+	void useLower(bool lower) { this->lower = lower; }
+*/
+        .function("flipped", &Siteswap::flipped)
+        .function("synchEquivelent", (string(Siteswap::*)(bool)const)&Siteswap::synchEquivelent)
+        .function("loadTemplates", &Siteswap::loadTemplates)
+        .property("useSynchGround", (bool(Siteswap::*)()const)&Siteswap::useSynchGround, (void(Siteswap::*)(bool))&Siteswap::useSynchGround)
+        .property("useLower", (bool(Siteswap::*)()const)&Siteswap::useLower, (void(Siteswap::*)(bool))&Siteswap::useLower)
+        ;
+}
 
 #endif //SITESWAP

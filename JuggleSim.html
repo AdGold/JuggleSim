@@ -1,0 +1,87 @@
+<html>
+<head>
+<title>JuggleSim online</title>
+</head>
+<body>
+<br>
+<b>Enter siteswap:</b><br>
+<input name="siteswap" id="pattern"> <br><br>
+Notation:
+<input type="radio" name="notation" value="siteswap" id="siteswap" checked="true">Siteswap
+<input type="radio" name="notation" value="stack" id="stack">Stack
+<br>
+<input type="checkbox" id="synch-ground"> Use synch ground for transitions
+<br>
+<input type="button" id="flip" value="Flip siteswap">
+<hr />
+<p id="info">info</p>
+</body>
+<script type="text/javascript" src="siteswap.js"></script>
+<script type="text/javascript">
+
+ss = new Module.Siteswap;
+if (!ss.loadTemplates())
+{
+    alert('Could not load template file');
+}
+
+function update()
+{
+	var pattern = document.getElementById('pattern').value;
+    var isStack = document.getElementById('stack').checked;
+    ss.setSiteswap(pattern, isStack);
+    if (ss.isValid())
+    {
+		document.getElementById('info').innerHTML = getInfo();
+    }
+	else
+	{
+		document.getElementById('info').innerHTML = ss.getErrMsg();
+	}
+}
+
+function getInfo()
+{
+    var res = 'Siteswap: ' + ss.getSiteswap() + '<br>' +
+          'Objects: ' + ss.getBalls() + '<br>' +
+          'Period: ' + ss.getPeriod() + '<br>' +
+          'Max throw: ' + ss.getMaxThrow() + '<br>';
+    if (ss.isGround())
+    {
+          res += 'Ground state: ' + ss.getState() + '<br>';
+    }
+    else
+    {
+          res += 'State: ' + ss.getState() + '<br>';
+    }
+    if (!ss.isGround() || !(ss.useSynchGround ^ ss.isPureAsynch()))
+    {
+          res += 'Entry: ' + ss.getEntry() + '<br>' +
+          'Exit: ' + ss.getExit() + '<br>' +
+          'Excitation: ' + ss.getExcitation() + '<br>';
+    }
+    if (ss.isVanila())
+    {
+          res += 'Stack notation: ' + ss.getStackNotation() + '<br>';
+    }
+    if (ss.getComment())
+    {
+          res += 'Comment: ' + ss.getComment() + '<br>';
+    }
+    return res;
+}
+
+document.getElementById('pattern').oninput = update;
+document.getElementById('siteswap').onclick= update;
+document.getElementById('stack').onclick = update;
+document.getElementById('synch-ground').onclick = function(){
+    ss.useSynchGround = document.getElementById('synch-ground').checked;
+    update();
+}
+document.getElementById('flip').onclick = function(){
+    document.getElementById('pattern').value = ss.flipped();
+    update();
+}
+
+</script>
+</html>

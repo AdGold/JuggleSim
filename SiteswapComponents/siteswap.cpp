@@ -22,7 +22,8 @@ bool Siteswap::setSiteswap(string _pattern, bool isStack)
         isStack = false;
     }
     string pattern = expand(_pattern);
-    if (!(errMsg = siteswap.setThrows(pattern)).empty()) return false;
+    errMsg = siteswap.setThrows(pattern);
+    if (!errMsg.empty()) return false;
     
     if (isStack)
     {
@@ -72,8 +73,8 @@ string Siteswap::synchEquivelent(bool hand) const
     bool flipAtEnd = false;
     if (!doubleSiteswap[0].hasSynch())
     {
-        if (doubleSiteswap[0].getRHThrows().size() > 0 && hand
-            || doubleSiteswap[0].getLHThrows().size() > 0 && !hand)
+        if ((doubleSiteswap[0].getRHThrows().size() > 0 && hand)
+            || (doubleSiteswap[0].getLHThrows().size() > 0 && !hand))
         {
             hand = !hand;
             flipAtEnd = true;
@@ -417,7 +418,7 @@ bool Siteswap::checkvalid(string pattern)
         //array[n][j]--; //-- added on next line
         if (--((j)?array[n].second:array[n].first) < 0)
         {
-            errMsg = "Collision in siteswap, did you mean one of these?";
+            errMsg = "Collision in siteswap.";
             return false;
         }
     }

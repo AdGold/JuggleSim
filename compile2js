@@ -1,0 +1,3 @@
+~/emscripten/em++ -O2 -std=c++11 --bind SiteswapComponents/*.cpp pugixml/*.cpp -o siteswap.html --embed-file templates.xml
+
+rm siteswap.html

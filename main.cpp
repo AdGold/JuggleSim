@@ -4,8 +4,23 @@ using namespace std;
 #include "SiteswapComponents/siteswap.h"
 using namespace SiteswapComponents;
 
+#include "AnimationComponents/patternSettings.h"
+using namespace AnimationComponents;
+
 int main()
 {
+	PatternSettings ps;
+	ps.setSiteswap("321");
+	ps.setIsStack(true);
+	ps.setCurrentFile("test.xml");
+	vector<Colour> vc;
+	vc.push_back(Colour(231,200,33));
+	vc.push_back(Colour(43,235,36));
+	ps.setBallColours(vc);
+	ps.save();
+	PatternSettings ps2;
+	ps2.open("test.xml");
+	cout<<ps2.getSiteswap()<<", "<<ps2.isStack()<<", "<<ps2.isSiteswap()<<", "<<ps2.getCurrentFile()<<", "<<ps2.getBallSize()<<", "<<ps2.getThrowsPerSecond()<<", "<<ps2.getBeatLength()<<", "<<ps2.getGravityInternal()<<", "<<ps2.getGravity()<<", "<<ps2.getDwellTime()<<"\n";
 	Siteswap ss;
 	bool loaded;
 	TemplateSS::load("templates.xml", loaded);
@@ -32,8 +47,8 @@ int main()
 		//// cout<<"Difficulty: "<<ss.getDifficulty()<<endl;
 		// = working
 		// cout<<"Stack equivelent: "<<ss.getStackNotation()<<endl;
-		// cout<<"Entry; "<<ss.getEntry()<<endl;
-		// cout<<"Exit: "<<ss.getExit()<<endl;
+		cout<<"Entry; "<<ss.getEntry()<<endl;
+		cout<<"Exit: "<<ss.getExit()<<endl;
 		// cout<<"Ground: "<<ss.isGround()<<endl;
 		// cout<<"Flipped: "<<ss.flipped()<<endl;
 		// cout<<"Synch equivs: RH forward: "<<ss.synchEquivelent(true)<<", LH forward: "<<ss.synchEquivelent(false)<<endl;
