@@ -24,7 +24,6 @@ bool Siteswap::setSiteswap(string _pattern, bool isStack)
     string pattern = expand(_pattern);
     errMsg = siteswap.setThrows(pattern);
     if (!errMsg.empty()) return false;
-
     
     if (isStack)
     {
