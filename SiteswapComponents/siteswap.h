@@ -115,3 +115,4 @@ EMSCRIPTEN_BINDINGS(siteswap_test) {
 }
 
 #endif //SITESWAP
+
