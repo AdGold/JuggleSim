@@ -271,3 +271,4 @@ string intToSiteswap(int s, bool lower)
 };
 
 };
+
